@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Timetable</title>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-family: Arial, sans-serif;
+    }
+    thead {
+        background-color: #4CAF50;
+        color: white;
+    }
+    thead th, tbody td, tfoot td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+    tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tfoot {
+        background-color: #ddd;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<h2>Simple Academic Timetable (With Subject Codes)</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>09:00 - 10:00</td>
+            <td>BELH 0020</td>
+            <td>BELH 0020</td>
+            <td>BCSC 0804</td>
+            <td>BCSE 0031</td>
+            <td>BCSE 0813</td>
+        </tr>
+
+        <tr>
+            <td>10:00 - 11:00</td>
+            <td>BCSC 1010</td>
+            <td>BCSC 1010</td>
+            <td>BELH 0020</td>
+            <td>BCSC 0802</td>
+            <td>BCSC 1003</td>
+        </tr>
+
+        <tr>
+            <td>11:00 - 12:00</td>
+            <td>—</td>
+            <td>BCSC 1003</td>
+            <td>BCSC 1010</td>
+            <td>BCSC 0802</td>
+            <td>BCSC 1005</td>
+        </tr>
+
+        <tr>
+            <td>01:00 - 02:00</td>
+            <td>BCSC 1002</td>
+            <td>BCSC 0801</td>
+            <td>PCPH 0001</td>
+            <td>BCSC 1005</td>
+            <td>BCSC 1003</td>
+        </tr>
+
+        <tr>
+            <td>02:00 - 03:00</td>
+            <td>BCSC 1002</td>
+            <td>BCSC 0801</td>
+            <td>PCPH 0001</td>
+            <td>BCSC 1003</td>
+            <td>BCSE 0031</td>
+        </tr>
+
+        <tr>
+            <td>03:00 - 04:00</td>
+            <td>BCSC 1002</td>
+            <td>BCSC 0801</td>
+            <td>PCPH 0001</td>
+            <td>—</td>
+            <td>BCSE 0031</td>
+        </tr>
+
+        <tr>
+            <td>04:00 - 05:00</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>BEDM 0001</td>
+            <td>BEDM 0001</td>
+        </tr>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="6">End of Timetable</td>
+        </tr>
+    </tfoot>
+</table>
+
+</body>
+</html>
