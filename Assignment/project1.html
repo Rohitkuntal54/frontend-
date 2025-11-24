@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Number Pattern Generator</title>
+
+<style>
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #ff9f1c, #ff6a00, #ff3c00);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 450px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    color: #fff;
+    text-align: center;
+    transform: translateY(-20px);
+    opacity: 0;
+    animation: fadeIn 1.1s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+select, input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #333;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+button {
+    width: 90%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff2d75, #ff6a00);
+    box-shadow: 0 4px 18px rgba(255, 45, 117, 0.5);
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 25px rgba(255, 45, 117, 0.7);
+}
+
+pre {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 12px;
+    font-size: 20px;
+    white-space: pre-wrap;
+    color: #fff;
+    line-height: 1.5;
+}
+
+.even {
+    color: #ffe066;
+    font-weight: 700;
+}
+.odd {
+    color: #06f7b5;
+    font-weight: 700;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Pattern Generator</h2>
+
+    <select id="patternType">
+        <option value="triangle">Triangle</option>
+        <option value="pyramid">Pyramid</option>
+        <option value="diamond">Diamond</option>
+    </select>
+
+    <input type="number" id="rows" placeholder="Enter number of rows" min="1">
+
+    <button onclick="generatePattern()">Generate Pattern</button>
+
+    <pre id="output"></pre>
+</div>
+
+<script>
+
+function generatePattern() {
+    const type = document.getElementById("patternType").value;
+    const rows = parseInt(document.getElementById("rows").value);
+
+    if (!rows || rows < 1) {
+        document.getElementById("output").textContent = "Enter a valid number!";
+        return;
+    }
+
+    let output = "";
+
+    if (type === "triangle") output = triangle(rows);
+    else if (type === "pyramid") output = pyramid(rows);
+    else if (type === "diamond") output = diamond(rows);
+
+    document.getElementById("output").innerHTML = output;
+}
+
+function triangle(rows) {
+    let txt = "";
+    for (let i = 1; i <= rows; i++) {
+        let line = "";
+        for (let j = 1; j <= i; j++) line += j + " ";
+        txt += `<span class="${i % 2 ? 'odd' : 'even'}">${line}</span>\n`;
+    }
+    return txt;
+}
+
+function pyramid(rows) {
+    let txt = "";
+    for (let i = 1; i <= rows; i++) {
+        let space = "&nbsp;".repeat((rows - i) * 2);
+        let line = "";
+        for (let j = 1; j <= i; j++) line += j + " ";
+        txt += `<span class="${i % 2 ? 'odd' : 'even'}">${space + line}</span>\n`;
+    }
+    return txt;
+}
+
+function diamond(rows) {
+    let txt = "";
+
+    for (let i = 1; i <= rows; i++) {
+        let space = "&nbsp;".repeat((rows - i) * 2);
+        let line = "";
+        for (let j = 1; j <= i; j++) line += j + " ";
+        txt += `<span class="${i % 2 ? 'odd' : 'even'}">${space + line}</span>\n`;
+    }
+
+    for (let i = rows - 1; i >= 1; i--) {
+        let space = "&nbsp;".repeat((rows - i) * 2);
+        let line = "";
+        for (let j = 1; j <= i; j++) line += j + " ";
+        txt += `<span class="${i % 2 ? 'odd' : 'even'}">${space + line}</span>\n`;
+    }
+
+    return txt;
+}
+
+</script>
+
+</body>
+</html>
+
